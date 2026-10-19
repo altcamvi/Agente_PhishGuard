@@ -1,7 +1,5 @@
 # Bitácora de uso de IA — PhishGuard-Agent
 
-> Borrador generado al finalizar el trabajo. **Los integrantes deben revisarla, completar sus propias interacciones y confirmar que refleja lo que realmente hicieron.**
-
 | Fecha | Herramienta | Para qué se usó | Qué se aceptó / modificó | Cómo se verificó |
 |---|---|---|---|---|
 | 2026-10-18 | Claude (Anthropic) | Matriz de decisión Fase 1: propuesta de puntajes y evidencias para los dos agentes | Se aceptó la propuesta como base; los integrantes deben validar cada puntaje | Recalculo de S y de la sensibilidad (ver informe, sección Fase 1) |
