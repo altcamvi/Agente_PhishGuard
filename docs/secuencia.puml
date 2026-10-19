@@ -1,0 +1,31 @@
+@startuml
+actor Usuario
+participant Interfaz
+participant Percepcion
+participant Decision
+participant Accion
+participant "Servicio reputacion" as Rep
+participant "Sistema correo/Memoria" as Mail
+Usuario -> Interfaz: analizar(correo)
+Interfaz -> Percepcion: step(raw) / perceive()
+alt entrada valida
+  loop por cada dominio (max 5)
+    Percepcion -> Rep: lookup(dominio)
+    alt responde
+      Rep --> Percepcion: score
+    else ServiceUnavailable
+      Percepcion -> Percepcion: reintento, rep=0.5, confianza*0.85
+    end
+  end
+  Percepcion -> Decision: vector de rasgos
+  Decision -> Decision: predict_proba, umbrales, razones
+  Decision -> Accion: decision
+  Accion -> Mail: quarantine_msg()/warn()/deliver(); store_case(); log
+else entrada invalida
+  Percepcion -> Decision: valid=False
+  Decision -> Accion: report_admin
+  Accion -> Mail: notify_admin(); log
+end
+Accion --> Interfaz: resultado
+Interfaz --> Usuario: etiqueta + razones + accion
+@enduml

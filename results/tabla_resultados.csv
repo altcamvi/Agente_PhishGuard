@@ -1,0 +1,9 @@
+medida,formula,umbral,casos,escenarios,resultado,cumple,media,desv,repeticiones,evidencia
+M1_recall_phishing,Recall = phishing detectados (advertencia o cuarentena) / phishing totales,>= 95.00%,3000,S06-S11,98.63% ± 0.38%,SI,0.9863333333333333,0.00380058475033046,5,results/casos.csv; logs/pruebas_agent_log.jsonl
+M2_falsos_positivos,FPR = legitimos con alerta (advertencia o cuarentena) / legitimos totales,<= 2.00%,2500,S01-S05,1.36% ± 0.61%,SI,0.013600000000000011,0.0060663003552412454,5,results/casos.csv; logs/pruebas_agent_log.jsonl
+M3_tiempo_medio_ms,"Tiempo medio de step() por correo (ms), incluye registro en log",<= 200.0 ms,5500,S01-S11,7.7 ms ± 1.7 ms,SI,7.743618290913714,1.6960750532576356,5,results/casos.csv; logs/pruebas_agent_log.jsonl
+M4_manejo_entradas_invalidas,Entradas invalidas manejadas sin excepcion y reportadas / entradas invalidas,>= 100.00%,55,S13,100.00% ± 0.00%,SI,1.0,0.0,5,results/casos.csv; logs/pruebas_agent_log.jsonl
+M5a_recall_sin_reputacion,Recall con servicio de reputacion caido (p_fail=1),>= 85.00%,500,S12,96.80% ± 1.79%,SI,0.968,0.017888543819998333,5,results/casos.csv; logs/pruebas_agent_log.jsonl
+M5b_fpr_sin_reputacion,FPR con servicio de reputacion caido (p_fail=1),<= 5.00%,500,S12,2.20% ± 1.64%,SI,0.02200000000000002,0.016431676725154998,5,results/casos.csv; logs/pruebas_agent_log.jsonl
+M6_trazabilidad_log,Ejecuciones con eventos percepcion+decision+accion y ts / ejecuciones,>= 100.00%,10155,todos,100.00% ± 0.00%,SI,1.0,0.0,1,results/casos.csv; logs/pruebas_agent_log.jsonl
+M7_mejora_por_aprendizaje,Recall(despues) - Recall(antes) en campana nueva tras reentrenar,>= 20.00%,3000,S14,99.40% ± 0.89%,SI,0.994,0.008944271909999166,5,results/casos.csv; logs/pruebas_agent_log.jsonl

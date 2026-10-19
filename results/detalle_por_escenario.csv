@@ -1,0 +1,15 @@
+escenario,tipo,generador,casos_por_rep,repeticiones,acierto_media,acierto_std,ms_medio
+S01,normal,legit_newsletter,100,5,0.984,0.0152,8.06
+S02,normal,legit_internal,100,5,1.0,0.0,7.93
+S03,normal,legit_transactional,100,5,1.0,0.0,7.98
+S04,limite,legit_urgent,100,5,0.982,0.0164,7.75
+S05,limite,legit_personal,100,5,0.966,0.0167,8.08
+S06,normal,phish_credential,100,5,0.998,0.0045,8.18
+S07,normal,phish_brand_spoof,100,5,1.0,0.0,7.49
+S08,normal,phish_lookalike,100,5,1.0,0.0,6.81
+S09,normal,phish_attachment,100,5,1.0,0.0,7.55
+S10,limite,phish_bec,100,5,0.972,0.0045,7.68
+S11,limite,phish_compromised,100,5,0.948,0.0192,7.68
+S12,falla esperada,reputacion_caida,200,5,0.973,0.0164,7.94
+S13,falla esperada,entradas_invalidas,11,5,1.0,0.0,0.22
+S14,aprendizaje,campana_nueva,600,5,0.8257,0.0035,7.93
