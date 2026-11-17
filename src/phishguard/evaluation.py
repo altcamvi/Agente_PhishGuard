@@ -6,7 +6,7 @@ from .simulator import MailEnvironment, PHISH_KINDS
 from .agent import PhishGuardAgent
 from .memory import Memory
 from .logger import RunLogger
-import sys; sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import sys; sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # raiz del repo (thresholds.py)
 from thresholds import THRESHOLDS
 
 # (id, tipo de caso, generador, etiqueta esperada)
@@ -39,7 +39,7 @@ def mean_std(v):
     return float(np.mean(v)), (float(st.stdev(v)) if len(v) > 1 else 0.0)
 
 
-def run_all(bundle, reps=5, n=100, results_dir="results", log_path="logs/pruebas_agent_log.jsonl", progress=None):
+def run_all(bundle, reps=5, n=100, results_dir="experiments", log_path="experiments/pruebas_agent_log.jsonl", progress=None):
     os.makedirs(results_dir, exist_ok=True)
     if os.path.exists(log_path): os.remove(log_path)
     logger = RunLogger(log_path, run_id="pruebas")
@@ -155,7 +155,7 @@ def summarize(df, reps, log_path, results_dir):
         fmt = (lambda x: f"{x * 100:.2f}%") if pct else (lambda x: f"{x:.1f} ms")
         out.append(dict(medida=name, formula=formula, umbral=f"{t['op']} {fmt(t['value'])}", casos=cases, escenarios=scn,
                         resultado=f"{fmt(m)} ± {fmt(s) if pct else f'{s:.1f} ms'}", cumple="SI" if check(name, m) else "NO",
-                        media=m, desv=s, repeticiones=len(per_rep[key]), evidencia="results/casos.csv; logs/pruebas_agent_log.jsonl"))
+                        media=m, desv=s, repeticiones=len(per_rep[key]), evidencia="experiments/casos.csv; experiments/pruebas_agent_log.jsonl"))
     tabla = pd.DataFrame(out)
     tabla.to_csv(os.path.join(results_dir, "tabla_resultados.csv"), index=False)
     # detalle por escenario

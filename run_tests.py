@@ -1,4 +1,5 @@
 """Ejecuta las pruebas de la Fase 3.  Uso:  python run_tests.py [--reps 5] [--n 100]"""
+import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "src"))  # el paquete vive en src/
 import argparse, time
 import pandas as pd
 from phishguard.training import load_or_train

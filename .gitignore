@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Artefactos regenerables (se recrean con `python train.py`)
+models/
+
+# Registros de ejecución de la app (la evidencia de las pruebas vive en experiments/)
+logs/
+results_app/
+
+# Datos crudos: nunca se suben correos (ver data/README.md)
+data/raw/
+data/processed/
+*.eml
+*.mbox
+
+# Sistema / editores
+.DS_Store
+.vscode/
+.idea/

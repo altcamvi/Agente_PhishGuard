@@ -1,4 +1,5 @@
 """Interfaz Streamlit de PHISHGUARD-AGENT (despliegue). Ejecutar:  streamlit run app.py"""
+import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "src"))  # el paquete vive en src/
 import streamlit as st, pandas as pd
 from phishguard.training import load_or_train
 from phishguard.simulator import MailEnvironment, ALL_KINDS

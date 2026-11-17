@@ -61,8 +61,14 @@ def load_or_train(path="models/phishguard_model.joblib"):
     return b
 
 
-if __name__ == "__main__":
+def train(path="models/phishguard_model.joblib"):
+    """Entrena el modelo y lo guarda en `path` (usado por train.py y por __main__)."""
     b = train_bundle()
-    os.makedirs("models", exist_ok=True)
-    joblib.dump(b, "models/phishguard_model.joblib")
-    print("modelo guardado en models/phishguard_model.joblib")
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    joblib.dump(b, path)
+    print(f"modelo guardado en {path}")
+    return b
+
+
+if __name__ == "__main__":
+    train()

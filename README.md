@@ -3,31 +3,49 @@
 Agente de aprendizaje que clasifica correos como **legítimo / sospechoso / phishing** y actúa
 (permitir, advertir, cuarentena, reportar al administrador). Proyecto de *Inteligencia Artificial* — UTB.
 
-## Ciclo del agente (`phishguard/agent.py`)
+## Estructura del repositorio
+```
+src/phishguard/   código del agente (percepción, decisión, acción, memoria, simulador, evaluación)
+data/             datos o script de descarga (nunca correos crudos); ver data/README.md
+notebooks/        exploración
+experiments/      resultados, log y semillas que respaldan las tablas del informe
+docs/             diagramas y bitácora de uso de IA (docs/bitacora_ia.md)
+app.py  train.py  run_tests.py  thresholds.py   puntos de entrada y umbrales de aceptación
+```
+
+## Alcance del proyecto final (Hito 1)
+La entrega anterior evaluó el agente solo con correos **sintéticos**. El proyecto final lo lleva a **correo real**
+(Nazario, SpamAssassin, Enron) con línea base, comparación de modelos (regresión logística, Random Forest,
+gradient boosting), validación cruzada, prueba dejando una fuente fuera y análisis por subgrupo. Las métricas y
+umbrales están declarados en la propuesta (`nombre_proyecto_hito1.pdf`). **Estado actual:** el código y los
+resultados de este repositorio siguen siendo los del simulador.
+
+## Ciclo del agente (`src/phishguard/agent.py`)
 `perceive()` (parseo + rasgos + consulta de reputación) → `decide()` (modelo + umbrales + confianza) → `act()` (sistema de correo, memoria, log).
 
 ## Estructura
 | Archivo | Rol | Componente IBM |
 |---|---|---|
-| `phishguard/features.py` | Percepción: encabezados, SPF/DKIM/DMARC, URLs, adjuntos, texto | Percepción |
-| `phishguard/agent.py` | `perceive/decide/act`, orden de comprobaciones | Planificación, Razonamiento |
-| `phishguard/memory.py` | Memoria corta/larga, cola de retroalimentación | Memoria |
-| `phishguard/tools.py` | Reputación (reintento + degradación) y sistema de correo | Herramientas |
-| `phishguard/agent.py` (`REASONS`, `needs_review`) y `app.py` | Alertas y reportes | Comunicación |
+| `src/phishguard/features.py` | Percepción: encabezados, SPF/DKIM/DMARC, URLs, adjuntos, texto | Percepción |
+| `src/phishguard/agent.py` | `perceive/decide/act`, orden de comprobaciones | Planificación, Razonamiento |
+| `src/phishguard/memory.py` | Memoria corta/larga, cola de retroalimentación | Memoria |
+| `src/phishguard/tools.py` | Reputación (reintento + degradación) y sistema de correo | Herramientas |
+| `src/phishguard/agent.py` (`REASONS`, `needs_review`) y `app.py` | Alertas y reportes | Comunicación |
 | `agent.retrain()` + `memory.review()` | Reentrenamiento tras revisión | Aprendizaje |
-| `phishguard/simulator.py` | Entorno simulado (correos + servicio de reputación) | — |
-| `phishguard/evaluation.py`, `run_tests.py`, `thresholds.py` | Pruebas Fase 3 | — |
+| `src/phishguard/simulator.py` | Entorno simulado (correos + servicio de reputación) | — |
+| `src/phishguard/evaluation.py`, `run_tests.py`, `thresholds.py` | Pruebas Fase 3 | — |
 
-## Ejecución en otro equipo (Python 3.10+)
+## Ejecución en otro equipo (Python 3.10+, probado con 3.12)
 ```bash
-python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python -m phishguard.training      # entrena y guarda models/phishguard_model.joblib (~1 min)
-python run_tests.py                # pruebas completas: 5 repeticiones x 100 correos (~4 min)
-streamlit run app.py               # interfaz web
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt    # versiones fijas
+python run_tests.py                # entrena si hace falta y ejecuta las pruebas (~2-4 min)
 ```
+Opcional: `python train.py` (solo entrena y guarda `models/phishguard_model.joblib`) y `streamlit run app.py` (interfaz web).
 Si `models/phishguard_model.joblib` no existe (o es de otra versión de scikit-learn), se reentrena automáticamente.
-Salidas: `results/tabla_resultados.csv`, `results/detalle_por_escenario.csv`, `results/casos.csv`, `logs/pruebas_agent_log.jsonl`.
+Salidas: `experiments/tabla_resultados.csv`, `experiments/detalle_por_escenario.csv`, `experiments/casos.csv`, `experiments/pruebas_agent_log.jsonl`.
+Semillas y qué archivo respalda cada tabla del informe: ver `experiments/README.md`.
 
 ## Despliegue (Streamlit Community Cloud)
 **Aplicación en línea:** https://agentephishguard.streamlit.app/
@@ -78,4 +96,4 @@ La app tiene tres pestañas. No requiere instalar nada si se usa el enlace de ar
 
 ## Datos y limitaciones
 Los correos son **sintéticos** (simulador con aleatoriedad y solapamiento entre clases). Los resultados describen el
-comportamiento sobre ese entorno, no sobre correo real. `phishguard/features.py` acepta cualquier correo `.eml` real.
+comportamiento sobre ese entorno, no sobre correo real. `src/phishguard/features.py` acepta cualquier correo `.eml` real.
