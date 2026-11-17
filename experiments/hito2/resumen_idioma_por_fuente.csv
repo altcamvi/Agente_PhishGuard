@@ -1,0 +1,13 @@
+source,lang,correos
+enron,desconocido,480
+enron,en,7405
+enron,es,1
+enron,mixto,8
+nigerian,desconocido,400
+nigerian,en,6059
+nigerian,es,79
+nigerian,mixto,15
+spamassassin,desconocido,65
+spamassassin,en,4046
+spamassassin,es,4
+spamassassin,mixto,2

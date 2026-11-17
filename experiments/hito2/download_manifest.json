@@ -1,0 +1,153 @@
+{
+  "spamassassin": {
+    "terms_url": "https://spamassassin.apache.org/old/publiccorpus/readme.html",
+    "terms_accepted": true,
+    "files": [
+      {
+        "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham.tar.bz2",
+        "file": "20030228_easy_ham.tar.bz2",
+        "bytes": 1612216,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham_2.tar.bz2",
+        "file": "20030228_easy_ham_2.tar.bz2",
+        "bytes": 1077892,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://spamassassin.apache.org/old/publiccorpus/20030228_hard_ham.tar.bz2",
+        "file": "20030228_hard_ham.tar.bz2",
+        "bytes": 1029898,
+        "sha256": null,
+        "note": "ya existia"
+      }
+    ]
+  },
+  "enron": {
+    "terms_url": "https://www.cs.cmu.edu/~enron/",
+    "terms_accepted": true,
+    "files": [
+      {
+        "url": "https://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz",
+        "file": "enron_mail_20150507.tar.gz",
+        "bytes": 443254787,
+        "sha256": null,
+        "note": "ya existia"
+      }
+    ]
+  },
+  "nazario": {
+    "terms_url": "https://monkey.org/~jose/phishing/",
+    "terms_accepted": true,
+    "files": [
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2015",
+        "file": "phishing-2015",
+        "bytes": 8815568,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2016",
+        "file": "phishing-2016",
+        "bytes": 12578274,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2017",
+        "file": "phishing-2017",
+        "bytes": 11352450,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2018",
+        "file": "phishing-2018",
+        "bytes": 8775701,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2019",
+        "file": "phishing-2019",
+        "bytes": 5211476,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2020",
+        "file": "phishing-2020",
+        "bytes": 5826445,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2021",
+        "file": "phishing-2021",
+        "bytes": 2719946,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2022",
+        "file": "phishing-2022",
+        "bytes": 4775954,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2023",
+        "file": "phishing-2023",
+        "bytes": 7763704,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2024",
+        "file": "phishing-2024",
+        "bytes": 15457816,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing-2025",
+        "file": "phishing-2025",
+        "bytes": 18769863,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing0.mbox",
+        "file": "phishing0.mbox",
+        "bytes": 3119972,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing1.mbox",
+        "file": "phishing1.mbox",
+        "bytes": 4191770,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing2.mbox",
+        "file": "phishing2.mbox",
+        "bytes": 10420294,
+        "sha256": null,
+        "note": "ya existia"
+      },
+      {
+        "url": "https://monkey.org/~jose/phishing/phishing3.mbox",
+        "file": "phishing3.mbox",
+        "bytes": 20067215,
+        "sha256": "b29336d2e31c2dff19639415e98ed2aced5b4d63675ea5e29bea1a7d4e452841",
+        "downloaded_utc": "2026-11-17T04:39:00+00:00"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+split,label,correos
+test,0,1802
+test,1,983
+train,0,8407
+train,1,4587
+val,0,1802
+val,1,983

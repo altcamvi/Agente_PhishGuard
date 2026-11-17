@@ -1,0 +1,4 @@
+fuente_excluida,metrica,valor,n,umbral,ms_por_correo,nota
+enron,FPR,0.6645553585001267,7894.0,0.4516284480269019,0.4567549404610638,
+nigerian,recall,,,,,sin la fuente solo queda una clase para entrenar
+spamassassin,FPR,0.2936604323536556,4117.0,0.5132784984326161,0.3353264755891506,

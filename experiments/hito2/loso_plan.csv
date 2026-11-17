@@ -1,0 +1,4 @@
+fuente_excluida,clase,metrica,correos_excluidos,calculable,motivo
+enron,legitimo,FPR,7894,True,
+nigerian,phishing,recall,6553,False,sin la fuente solo queda una clase para entrenar
+spamassassin,legitimo,FPR,4117,True,

@@ -1,0 +1,42 @@
+{
+  "spamassassin": {
+    "leidos": 4150,
+    "conservados": 4150,
+    "sustituciones": {
+      "telefonos": 360,
+      "emails": 15723,
+      "marcadores_fuente": 7160,
+      "nombres_encabezado": 5533,
+      "adjuntos": 51
+    }
+  },
+  "enron": {
+    "leidos": 8000,
+    "conservados": 8000,
+    "sustituciones": {
+      "telefonos": 4146,
+      "emails": 50621,
+      "marcadores_fuente": 59515,
+      "nombres_encabezado": 189,
+      "adjuntos": 0
+    }
+  },
+  "nigerian": {
+    "leidos": 6973,
+    "conservados": 6973,
+    "sustituciones": {
+      "telefonos": 762,
+      "emails": 1223,
+      "marcadores_fuente": 676,
+      "nombres_encabezado": 0,
+      "adjuntos": 0
+    }
+  },
+  "total_sustituciones": {
+    "telefonos": 5268,
+    "emails": 67567,
+    "marcadores_fuente": 67351,
+    "nombres_encabezado": 5722,
+    "adjuntos": 51
+  }
+}

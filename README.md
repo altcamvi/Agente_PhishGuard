@@ -5,20 +5,35 @@ Agente de aprendizaje que clasifica correos como **legítimo / sospechoso / phis
 
 ## Estructura del repositorio
 ```
-src/phishguard/   código del agente (percepción, decisión, acción, memoria, simulador, evaluación)
+src/phishguard/   código del agente (percepción, decisión, acción, memoria, simulador, evaluación) y dataprep.py (Hito 2)
 data/             datos o script de descarga (nunca correos crudos); ver data/README.md
 notebooks/        exploración
 experiments/      resultados, log y semillas que respaldan las tablas del informe
 docs/             diagramas y bitácora de uso de IA (docs/bitacora_ia.md)
 app.py  train.py  run_tests.py  thresholds.py   puntos de entrada y umbrales de aceptación
+download_data.py  anonymize.py  make_splits.py  baseline.py  make_hito2_report.py   pipeline de datos, líneas base e informe (Hito 2)
+tests/            pruebas del pipeline de datos con corpus sintéticos
 ```
 
 ## Alcance del proyecto final (Hito 1)
 La entrega anterior evaluó el agente solo con correos **sintéticos**. El proyecto final lo lleva a **correo real**
 (Nazario, SpamAssassin, Enron) con línea base, comparación de modelos (regresión logística, Random Forest,
 gradient boosting), validación cruzada, prueba dejando una fuente fuera y análisis por subgrupo. Las métricas y
-umbrales están declarados en la propuesta (`nombre_proyecto_hito1.pdf`). **Estado actual:** el código y los
-resultados de este repositorio siguen siendo los del simulador.
+umbrales están declarados en la propuesta (`docs/phishguard_agent_hito1.pdf`). **Estado actual:** el código y los
+resultados del agente siguen siendo los del simulador; el pipeline de datos del Hito 2 está implementado y probado
+con corpus sintéticos, y falta ejecutarlo con los corpus reales (ver `data/README.md`).
+
+## Hito 2: datos reales y líneas base
+```bash
+python -m unittest discover -s tests -v    # pruebas del pipeline (sintéticas, ~2 s)
+python download_data.py --list             # ver qué publica cada sitio; descargar con --accept-terms (data/README.md)
+python anonymize.py && python make_splits.py
+python baseline.py                         # B0 y B1 en validación (--loso: dejar una fuente fuera; --final: test, una vez)
+python make_hito2_report.py --docx --pdf   # arma docs/hito2_informe.* con los resultados reales
+```
+Lista de entrega paso a paso: `docs/hito2_checklist.md`.
+Salidas (solo conteos y métricas, se pueden subir): `experiments/hito2/`. Exploración: `notebooks/01_exploracion_corpus.ipynb`.
+Aún **no** hay resultados sobre correo real en este repositorio: no se debe citar ninguna métrica del Hito 2 hasta ejecutar el pipeline.
 
 ## Ciclo del agente (`src/phishguard/agent.py`)
 `perceive()` (parseo + rasgos + consulta de reputación) → `decide()` (modelo + umbrales + confianza) → `act()` (sistema de correo, memoria, log).
@@ -35,7 +50,7 @@ resultados de este repositorio siguen siendo los del simulador.
 | `src/phishguard/simulator.py` | Entorno simulado (correos + servicio de reputación) | — |
 | `src/phishguard/evaluation.py`, `run_tests.py`, `thresholds.py` | Pruebas Fase 3 | — |
 
-## Ejecución en otro equipo (Python 3.10+, probado con 3.12)
+## Ejecución en otro equipo (Python 3.11+, probado con 3.12)
 ```bash
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
